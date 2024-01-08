@@ -24,6 +24,13 @@ class ProductController extends Controller
             } else {
                 $product->type_name = 'servicio';
             }
+
+            if ($product->is_delete == 1) {
+                $product->delete = 'Eliminado';
+            } else {
+                $product->delete = '';
+            }
+
         }
 
         return response()->json($products, 200);
@@ -40,6 +47,17 @@ class ProductController extends Controller
         $product = Product::where('sku', $sku)->first();
 
         if ($product) {
+            if ($product->type == 1) {
+                $product->type_name = 'software';
+            } else {
+                $product->type_name = 'servicio';
+            }
+
+            if ($product->is_delete == 1) {
+                $product->delete = 'Eliminado';
+            } else {
+                $product->delete = '';
+            }
             return response()->json(['status' => 'ok', 'response' => $product]);
         } else {
             return response()->json(['status' => 'error', 'response' => 'invalid sku']);
@@ -58,7 +76,7 @@ class ProductController extends Controller
             'name' => 'required|string',
             'price' => 'required|numeric',
             'type' => ['required', Rule::in([1, 2])],
-            'sku' => 'required|unique:products,sku'
+            'sku' => 'required|unique:products,sku|min:10|max:10'
         ]);
 
         if ($validator->fails()) {
@@ -125,7 +143,7 @@ class ProductController extends Controller
             $validator = Validator::make($request->all(), [
                 'name' => 'string',
                 'price' => 'numeric',
-                'sku' => 'unique:products,sku,except,id'
+                'sku' => ['min:10', 'max:10', Rule::unique("products", "sku")->ignore($product->id)]
             ]);
 
             if ($validator->fails()) {
