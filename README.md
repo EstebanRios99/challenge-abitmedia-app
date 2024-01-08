@@ -46,3 +46,31 @@
 **10.** Finalmente ejecutar el comando **php artisan migrate:refresh --seed** y ya se podrá utilizar cada una de las APIs.
 
 ## Funcionamiento
+
+### Login (Obtener JWT Token)
+
+Para poder utilizar las demás funciones del proyecto primero se debe iniciar sesión con las siguientes credenciales para obtener el token de acceso.
+
+**URL:** `http://127.0.0.1:8000/api/login`
+
+**Type**: POST
+
+```json
+{
+    "email":"admin@pruebas.com",
+    "password":"soporte1"
+}
+```
+
+**Respuesta Correcta**
+```json
+{
+   "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzA0NjUwODA2LCJleHAiOjE3MDQ2NTQ0MDYsIm5iZiI6MTcwNDY1MDgwNiwianRpIjoiU3U3NFl3OXFpRFVTVHpCdyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.tW7OLsqvfGF1LobU_7Dq0WzFgLiW-HDW7A5plnZbPxs"
+}
+```
+**Respuesta Incorrecta**
+```json
+{
+    "error": "invalid credentials"
+}
+```
