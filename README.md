@@ -7,6 +7,7 @@
 - [XAMPP V8.1.12](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.1.12/xampp-windows-x64-8.1.12-0-VS16-installer.exe/download).
 - [Composer](https://getcomposer.org/download/).
 - [Visual Studio Code](https://code.visualstudio.com/download).
+- [Postman](https://www.postman.com/downloads/) (Para ejecutar las Apis).
 
 ### Pasos para la Instalación y Ejecución
 
@@ -29,7 +30,7 @@
 **7.** Ejecutar XAMPP e inicializar Apache y MySQL tal como se muestra en la imagen.
 ![Image Text](https://github.com/EstebanRios99/challenge-abitmedia-app/blob/master/public/img_readme/xampp.png)
 
-**Nota:** En el caso de que exista conflictos con el puerto 80 se debe cambiar el puerto y para esto se deben seguir los siguientes pasos.
+**Nota:** En el caso de que exista conflictos con el puerto 80 se debe cambiar el puerto y para esto se deben seguir los pasos **7.1** y **7.2**.
 
 **7.1** Dentro de XAMPP ir a la sección **Config** y seleccionar la opción **`Apache (httpd.config)`** tal como se muestra en la imagen.
     ![Image Text](https://github.com/EstebanRios99/challenge-abitmedia-app/blob/master/public/img_readme/config_p1.png)
@@ -44,6 +45,12 @@
 ![Image Text](https://github.com/EstebanRios99/challenge-abitmedia-app/blob/master/public/img_readme/bd_p2.png)
 
 **10.** Finalmente ejecutar el comando **php artisan migrate:refresh --seed** y ya se podrá utilizar cada una de las APIs.
+
+**11. (Opcional)** Dentro de la carpeta **public/collections** se encuentra el archivo **`challenge-abitmedia-app.postman_collection.json`** el cual es una colección de Postman con todas las APIs del proyecto.
+
+  **Nota:** Para cargar la coleción una vez se abre el Postman se debe dar clic en la opción de **Import** y cargar el archivo mencionado anteriormente.
+  ![Image Text](https://github.com/EstebanRios99/challenge-abitmedia-app/blob/master/public/img_readme/postman.png)
+
 
 ## Funcionamiento
 
