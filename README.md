@@ -1,66 +1,45 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Documentación para la Ejecución y Funcionamiento del Proyecto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Instalación y Ejecución
 
-## About Laravel
+### Requisitos para la Instalación
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [XAMPP V8.1.12](https://sourceforge.net/projects/xampp/files/XAMPP%20Windows/8.1.12/xampp-windows-x64-8.1.12-0-VS16-installer.exe/download).
+- [Composer](https://getcomposer.org/download/).
+- [Visual Studio Code](https://code.visualstudio.com/download).
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Pasos para la Instalación y Ejecución
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**1.** Instalar Composer y luego configurar la variable de entorno **PATH** para que el ejecutable de Laravel pueda ser localizado en el sistema. 
 
-## Learning Laravel
+- **macOS:** $HOME/.composer/vendor/bin
+- **Distribuciones GNU/Linux:** $HOME/.config/composer/vendor/bin o $HOME/.composer/vendor/bin
+- **Windows:** %USERPROFILE%\AppData\Roaming\Composer\vendor\bin
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**2.** Instalar la versión de XAMPP.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+**3.** Clonar el proyecto en el directorio que usted lo requiera utilizando el comando **git clone https://github.com/EstebanRios99/challenge-abitmedia-app.git**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+**4.** Abrir la carpeta del proyecto en un editor de código de preferencia **Visual Studio Code** y en el terminal ejecutar el comando **composer install**.
 
-## Laravel Sponsors
+**5.** Dentro de la carpeta principal del proyecto crear el archivo **.env** y copiar la información del archivo **.env.example**.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**6.** Ejecutar los comandos **php artisan key:generate** y **php artisan jwt:secret**.
 
-### Premium Partners
+**7.** Ejecutar XAMPP e inicializar Apache y MySQL tal como se muestra en la imagen.
+(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/xampp.png)
+**Nota:** En el caso de que exista conflictos con el puerto 80 se debe cambiar el puerto y para esto se deben seguir los siguientes pasos.
+    **7.1** Dentro de XAMPP ir a la sección **Config** y seleccionar la opción **`Apache (httpd.config)`** tal como se muestra en la imagen.
+    (https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/config_p1.png)
+    **7.2** En el archivo buscar **Listen 80** y cambiar el puerto 80 por cualquier otro, por ejemplo 85 guardar y volver a inizializar el Apache.
+    (https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/config_p2.png)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**8.** Abrir el Admin de MySQL **http://localhost/phpmyadmin/**, en el caso que se haya realizado la configuración del puerto la ruta será: **http://localhost:[puerto]/phpmyadmin/** `(http://localhost:85/phpmyadmin/)` y dar clic en la opcion **Nuevo**.
+(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/bd_p1.png)
 
-## Contributing
+**9.** Asignar el nombre **abitmedia** a la Base de Datos y dar clic en **Crear**.
+(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/bd_p2.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**10.** Finalmente ejecutar el comando **php artisan migrate:refresh --seed** y ya se podrá utilizar cada una de las APIs.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Funcionamiento
