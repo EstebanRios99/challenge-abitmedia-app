@@ -27,18 +27,21 @@
 **6.** Ejecutar los comandos **php artisan key:generate** y **php artisan jwt:secret**.
 
 **7.** Ejecutar XAMPP e inicializar Apache y MySQL tal como se muestra en la imagen.
-(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/xampp.png)
+![xampp](https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/xampp.png)
+
 **Nota:** En el caso de que exista conflictos con el puerto 80 se debe cambiar el puerto y para esto se deben seguir los siguientes pasos.
+
     **7.1** Dentro de XAMPP ir a la sección **Config** y seleccionar la opción **`Apache (httpd.config)`** tal como se muestra en la imagen.
-    (https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/config_p1.png)
+    ![config 1](https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/config_p1.png)
+
     **7.2** En el archivo buscar **Listen 80** y cambiar el puerto 80 por cualquier otro, por ejemplo 85 guardar y volver a inizializar el Apache.
-    (https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/config_p2.png)
+    ![config 2(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/config_p2.png)
 
 **8.** Abrir el Admin de MySQL **http://localhost/phpmyadmin/**, en el caso que se haya realizado la configuración del puerto la ruta será: **http://localhost:[puerto]/phpmyadmin/** `(http://localhost:85/phpmyadmin/)` y dar clic en la opcion **Nuevo**.
-(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/bd_p1.png)
+![bd_1](https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/bd_p1.png)
 
 **9.** Asignar el nombre **abitmedia** a la Base de Datos y dar clic en **Crear**.
-(https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/bd_p2.png)
+![bd_2](https://github.com/EstebanRios99/challenge-abitmedia-app/tree/master/public/img_readme/bd_p2.png)
 
 **10.** Finalmente ejecutar el comando **php artisan migrate:refresh --seed** y ya se podrá utilizar cada una de las APIs.
 
