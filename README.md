@@ -53,8 +53,9 @@ Para poder utilizar las demás funciones del proyecto primero se debe iniciar se
 
 **URL:** `http://127.0.0.1:8000/api/login`
 
-**Type**: POST
+**Type:** POST
 
+**Body:**
 ```json
 {
     "email":"admin@pruebas.com",
@@ -72,5 +73,224 @@ Para poder utilizar las demás funciones del proyecto primero se debe iniciar se
 ```json
 {
     "error": "invalid credentials"
+}
+```
+
+### Obtener Productos
+Devuelve una lista completa con todos los productos que se encuentran registrados.
+
+**URL:** `http://127.0.0.1:8000/api/products`
+
+**Type:** GET
+
+**Authorization:** De tipo Bearer, se debe utilizar el token devuelto por el api de login.
+
+**Respuesta Correcta**
+```json
+[
+    {
+        "id": 1,
+        "name": "Antivirus W1 Edit",
+        "price": 5,
+        "so": "Windows",
+        "license": "SAieNVeCtQRRQ4WiH03j3Z5nDudag8JvUu9cK1S0a2CGgg7EZi6xRthnTXyFt5xPJY0hiiHSDhNdFoEUowFfWuOMPdH57FwOhXkT",
+        "sku": "1234567890",
+        "type": "1",
+        "is_delete": "1",
+        "type_name": "software",
+        "delete": "Eliminado"
+    },
+    {
+        "id": 2,
+        "name": "Antivirus W2",
+        "price": 5,
+        "so": "Windows",
+        "license": "mkCSvDcv3DcnXipftKj3saXTQlm3yqYMj7e6uivMw6d4qC0IGyrZCBRdswBSf7njEmLjZ06NtLuUh7G09moD5KX7MQgeFfQ3Ar7t",
+        "sku": "5891633911",
+        "type": "1",
+        "is_delete": "0",
+        "type_name": "software",
+        "delete": ""
+    }
+]
+```
+**Respuesta Incorrecta**
+```json
+{
+    "error": "token_invalid"
+}
+```
+
+### Obtener Producto por SKU
+Obtener la información de un producto en específico utilizando el SKU registrado.
+
+**URL:** `http://127.0.0.1:8000/api/product/{sku}`
+
+**Ej URL:** `http://127.0.0.1:8000/api/product/1234567890`
+
+**Type:** GET
+
+**Authorization:** De tipo Bearer, se debe utilizar el token devuelto por el api de login.
+
+**Respuesta Correcta**
+```json
+{
+    "status": "ok",
+    "response": {
+        "id": 1,
+        "name": "Antivirus W1 Edit",
+        "price": 5,
+        "so": "Windows",
+        "license": "SAieNVeCtQRRQ4WiH03j3Z5nDudag8JvUu9cK1S0a2CGgg7EZi6xRthnTXyFt5xPJY0hiiHSDhNdFoEUowFfWuOMPdH57FwOhXkT",
+        "sku": "1234567890",
+        "type": "1",
+        "is_delete": "1",
+        "type_name": "software",
+        "delete": "Eliminado"
+    }
+}
+```
+**Respuesta Incorrecta**
+```json
+{
+    "error": "token_invalid"
+}
+```
+
+### Crear Producto
+Registrar un nuevo producto para la venta.
+
+**URL:** `http://127.0.0.1:8000/api/product`
+
+**Type:** POST
+
+**Authorization:** De tipo Bearer, se debe utilizar el token devuelto por el api de login.
+
+**Body:**
+```json
+{
+    "name" : "Antivirus W11",
+    "price" : 6,
+    "type" : 1,
+    "sku" : 4538587211,
+    "so" : "Windows"
+}
+```
+
+**Notas:**
+- **name:** Nombre que va a llevar el producto.
+-  **price:** Valor que tendrá el producto, debe ser un valor numérico.
+- **type:** El campo **type** representa si el tipo de producto que se va a crear, **1** para el caso de una licencia software y **2** para un servicio.
+- **sku:** Identificador único de cada producto, debe ser de 10 caracteres.
+- **so:** El campo **so** se utiliza para cuando se vaya a crear una nueva licencia, es decir, el campo **type** es de tipo 1, en caso que se vaya a crear un nuevo servicio se puede omitir o enviar un valor vacío.
+
+**Respuesta Correcta**
+```json
+{
+    "status": "ok",
+    "response": {
+        "name": "Capacitaciones del sistema",
+        "price": 40,
+        "so": null,
+        "license": null,
+        "sku": 4538587216,
+        "type": 2,
+        "is_delete": "0",
+        "id": 126
+    }
+}
+```
+**Respuesta Incorrecta**
+```json
+{
+    {
+        "error": "data_validation_failed",
+        "error_list": {
+            "sku": [
+                "The sku must be at least 10 characters."
+            ]
+        }
+    }
+}
+```
+
+### Actualizar Producto por SKU
+Actualizar la información de uno de los porductos utilizando el SKU registrado, se puede actualizar el nombre, precio y sku.
+
+**URL:** `http://127.0.0.1:8000/api/product/{sku}`
+
+**Ej URL:** `http://127.0.0.1:8000/api/product/4538587210`
+
+**Type:** PUT
+
+**Authorization:** De tipo Bearer, se debe utilizar el token devuelto por el api de login.
+
+**Body**
+```json
+{
+    "name" : "Mantenimiento de redes Edit",
+    "sku" : 4538587210,
+    "price": 45
+}
+```
+
+**Nota:** En caso que no se requiera modificar uno de los campos permitidos no se debe enviar esa información.
+
+**Respuesta Correcta**
+```json
+{
+    "status": "ok",
+    "response": {
+        "id": 124,
+        "name": "Mantenimiento de redes Edit",
+        "price": 45,
+        "so": null,
+        "license": null,
+        "sku": 4538587210,
+        "type": "2",
+        "is_delete": "0"
+    }
+}
+```
+**Respuesta Incorrecta**
+```json
+{
+    "error": "token_invalid"
+}
+```
+
+### Eliminar Producto por SKU
+Eliminar o desactivar uno de los productos utilizando el SKU registrado.
+
+**URL:** `http://127.0.0.1:8000/api/product/{sku}`
+
+**Ej URL:** `http://127.0.0.1:8000/api/product/4538587210`
+
+**Type:** PUT
+
+**Authorization:** De tipo Bearer, se debe utilizar el token devuelto por el api de login.
+
+**Nota:** El campo **is_delete** cambiará su estado a 1, lo que quiere decir que el producto se encuentra eliminado.
+
+**Respuesta Correcta**
+```json
+{
+    "status": "ok",
+    "response": {
+        "id": 124,
+        "name": "Mantenimiento de redes Edit",
+        "price": 35,
+        "so": null,
+        "license": null,
+        "sku": "4538587210",
+        "type": "2",
+        "is_delete": "1"
+    }
+}
+```
+**Respuesta Incorrecta**
+```json
+{
+    "error": "token_invalid"
 }
 ```
